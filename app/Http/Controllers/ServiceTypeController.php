@@ -19,16 +19,6 @@ class ServiceTypeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreServiceTypeRequest  $request
@@ -46,17 +36,6 @@ class ServiceTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(ServiceType $serviceType)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ServiceType  $serviceType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ServiceType $serviceType)
     {
         //
     }

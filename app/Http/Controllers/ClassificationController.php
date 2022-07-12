@@ -19,16 +19,6 @@ class ClassificationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreClassificationRequest  $request
@@ -46,17 +36,6 @@ class ClassificationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Classification $classification)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Classification  $classification
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Classification $classification)
     {
         //
     }

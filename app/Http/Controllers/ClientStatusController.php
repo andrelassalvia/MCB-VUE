@@ -19,16 +19,6 @@ class ClientStatusController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreClientStatusRequest  $request
@@ -46,17 +36,6 @@ class ClientStatusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(ClientStatus $clientStatus)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ClientStatus  $clientStatus
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ClientStatus $clientStatus)
     {
         //
     }

@@ -19,16 +19,6 @@ class OccupationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreOccupationRequest  $request
@@ -46,17 +36,6 @@ class OccupationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Occupation $occupation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Occupation  $occupation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Occupation $occupation)
     {
         //
     }

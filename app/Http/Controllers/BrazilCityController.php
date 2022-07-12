@@ -19,16 +19,6 @@ class BrazilCityController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreBrazilCityRequest  $request
@@ -46,17 +36,6 @@ class BrazilCityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(BrazilCity $brazilCity)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BrazilCity  $brazilCity
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BrazilCity $brazilCity)
     {
         //
     }
