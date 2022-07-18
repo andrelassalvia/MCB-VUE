@@ -15,9 +15,8 @@ class AlterUserTable extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->unsignedBigInteger('usertype_id')->after('name')->nullable();
-            $table->foreign('usertype_id')->references('id')->on('user_types');
-            $table->boolean('status')->default(1)->after('usertype_id');
+            $table->foreignId('user_type_id')->nullable()->constrained();
+            $table->boolean('status')->default(1)->after('user_type_id');
         });
     }
 
@@ -30,8 +29,8 @@ class AlterUserTable extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->dropForeign('users_usertype_id_foreign');
-            $table->dropColumn('usertype_id');                     
+            $table->dropForeign('users_user_type_id_foreign');
+            $table->dropColumn('user_type_id');                     
             $table->dropColumn('status');                     
         });
     }

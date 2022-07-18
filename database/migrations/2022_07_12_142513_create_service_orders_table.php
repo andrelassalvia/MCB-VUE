@@ -15,16 +15,11 @@ class CreateServiceOrdersTable extends Migration
     {
         Schema::create('service_orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->unsignedBigInteger('servicetype_id');
-            $table->foreign('servicetype_id')->references('id')->on('service_types');
-            $table->unsignedBigInteger('provider_id')->nullable();
-            $table->foreign('provider_id')->references('id')->on('providers');
-            $table->unsignedBigInteger('orderstatus_id')->nullable();
-            $table->foreign('orderstatus_id')->references('id')->on('order_statuses');
-            $table->unsignedBigInteger('classification_id')->nullable();
-            $table->foreign('classification_id')->references('id')->on('classifications');
+            $table->foreignId('client_id')->constrained();
+            $table->foreignId('service_type_id')->constrained();
+            $table->foreignId('provider_id')->constrained();
+            $table->foreignId('order_status_id')->nullable()->constrained();
+            $table->foreignId('classification_id')->nullable()->constrained();
             $table->date('finish_date')->nullable();
             $table->float('income', 8,2)->nullable();
             $table->float('cost', 8,2)->nullable();

@@ -21,7 +21,7 @@ class ClientStatus extends Model
     /**
      * table associated with the model
      */
-    protected $table = 'clients_statuses';
+    protected $table = 'client_statuses';
 
     // ======= RELATIONSHIPS ========= //
 

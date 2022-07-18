@@ -14,7 +14,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'client_id' => random_int(1, 1000),
+            'comment' => $this->faker->text(20)
         ];
     }
 }

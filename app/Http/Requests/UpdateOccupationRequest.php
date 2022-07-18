@@ -13,7 +13,7 @@ class UpdateOccupationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,24 @@ class UpdateOccupationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => array(
+                'required',
+                'unique:occupations',
+                'string',
+                'min:3',
+                'regex:/([a-zA-z])/'
+            )
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'O campo nome da ocupação é obrigatório',
+            'name.string' => 'O campo nome da ocupação aceita somente letras',
+            'name.min' => 'O nome da ocupação deve ter no mínimo 3 letras',
+            'name.regex' => 'O campo nome da ocupação aceita somente letras',
+            'name.unique' => 'O valor informado já existe no cadastro',
         ];
     }
 }

@@ -5,17 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $clients = array();
+
+        if($request->has('attr')){
+            $attr = $request->attr;
+            $clients = Client::selectRaw($attr)->get();
+        } else {
+            $clients = Client::all();
+        }
+        
+        return response()->json($clients, 200);
     }
 
     /**
@@ -26,7 +37,11 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
-        //
+        // dd($request->all());
+        $dataForm = $request->validated();
+        $client = Client::create($dataForm);
+
+        return response()->json($client, 200);
     }
 
     /**

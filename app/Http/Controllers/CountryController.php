@@ -15,7 +15,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        return Country::with(['clients', 'cities'])->orderBy('name')->get();
     }
 
     /**
@@ -26,7 +26,8 @@ class CountryController extends Controller
      */
     public function store(StoreCountryRequest $request)
     {
-        //
+        // dd($request->all());
+        return Country::create($request->except('_token'));
     }
 
     /**
@@ -47,9 +48,18 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCountryRequest $request, Country $country)
+    public function update(UpdateCountryRequest $request, $id)
     {
-        //
+        $country = Country::find($id);
+        if($country === null){
+
+            return response()->json(['msg' => 'Recurso nao encontrado'], 404); 
+        }
+        else{
+            $country->update($request->except('_token'));
+
+            return response()->json($country);
+        }
     }
 
     /**

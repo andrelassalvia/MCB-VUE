@@ -16,8 +16,7 @@ class CreateBrazilCitiesTable extends Migration
         Schema::create('brazil_cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('brazilstate_id');
-            $table->foreign('brazilstate_id')->references('id')->on('brazil_states');
+            $table->foreignId('brazil_state_id')->constrained();
             $table->timestamps();
         });
     }

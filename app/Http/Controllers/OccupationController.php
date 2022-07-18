@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Occupation;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreOccupationRequest;
 use App\Http\Requests\UpdateOccupationRequest;
 
@@ -13,9 +14,10 @@ class OccupationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        dd($request->get('attr'));
+        return Occupation::with(['clients'])->orderBy('name')->get();
     }
 
     /**
@@ -26,7 +28,7 @@ class OccupationController extends Controller
      */
     public function store(StoreOccupationRequest $request)
     {
-        //
+        return Occupation::create($request->except('_token'));
     }
 
     /**
@@ -35,9 +37,16 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function show(Occupation $occupation)
+    public function show($id)
     {
-        //
+       $occupation = Occupation::with(['clients'])->find($id);
+
+       if($occupation === null){
+
+        return response()->json(['msg' => 'Recurso nao encontrado'], 404); 
+       }
+
+       return $occupation;
     }
 
     /**
@@ -47,9 +56,18 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOccupationRequest $request, Occupation $occupation)
+    public function update(UpdateOccupationRequest $request, $id)
     {
-        //
+        $occupation = Occupation::find($id);
+        if($occupation === null){
+
+            return response()->json(['msg' => 'Recurso nao encontrado'], 404); 
+        }
+        else{
+            $occupation->update($request->except('_token'));
+
+            return response()->json($occupation);
+        }
     }
 
     /**
@@ -58,8 +76,18 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Occupation $occupation)
+    public function destroy($id)
     {
-        //
+        $occupation = Occupation::find($id);
+       if($occupation === null){
+        return response()->json(['msg' => 'Recurso nao encontrado'], 404); 
+       }
+        $deleted = $occupation->delete();
+
+        if ($deleted){
+            return response()->json(['Msg' => 'Apagado com sucesso']);
+        } else {
+            return response()->json(['msg' => 'Problemas']);
+        }
     }
 }

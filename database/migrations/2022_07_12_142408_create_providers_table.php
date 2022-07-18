@@ -20,10 +20,8 @@ class CreateProvidersTable extends Migration
             $table->string('tel')->unique();
             $table->string('email')->nullable();
             $table->string('zap')->nullable();
-            $table->unsignedBigInteger('brazilstate_id')->nullable();
-            $table->foreign('brazilstate_id')->references('id')->on('brazil_states');
-            $table->unsignedBigInteger('brazilcity_id')->nullable();
-            $table->foreign('brazilcity_id')->references('id')->on('brazil_cities');
+            $table->foreignId('brazil_state_id')->nullable()->constrained();
+            $table->foreignId('brazil_city_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
