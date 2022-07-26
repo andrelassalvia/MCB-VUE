@@ -28,58 +28,65 @@ Route::group([
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::post('logout', 'App\Http\Controllers\AuthController@logout');
     Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
-    Route::post('me', 'App\Http\Controllers\AuthController@me');
+    
 
 });
 
-// BRAZIL CITY
-Route::apiResource('brazil-cities', 'App\Http\Controllers\BrazilCityController');
+Route::group(['middleware' => 'jwt.auth'], function(){
 
-// BRAZIL STATE
-Route::apiResource('brazil-states', 'App\Http\Controllers\BrazilStateController');
+    Route::post('me', 'App\Http\Controllers\AuthController@me');
 
-// CITY
-Route::apiResource('cities', 'App\Http\Controllers\CityController');
+    // BRAZIL CITY
+    Route::apiResource('brazil-cities', 'App\Http\Controllers\BrazilCityController');
 
-// CLASSIFICATION
-Route::apiResource('classifications', 'App\Http\Controllers\ClassificationController');
+    // BRAZIL STATE
+    Route::apiResource('brazil-states', 'App\Http\Controllers\BrazilStateController');
 
-// CLIENTS
-Route::apiResource('clients', 'App\Http\Controllers\ClientController');
+    // CITY
+    Route::apiResource('cities', 'App\Http\Controllers\CityController');
 
-// CLIENT STATUS
-Route::apiResource('client-statuses', 'App\Http\Controllers\ClientStatusController');
+    // CLASSIFICATION
+    Route::apiResource('classifications', 'App\Http\Controllers\ClassificationController');
 
-// COMMENT
-Route::apiResource('comments', 'App\Http\Controllers\CommentController');
+    // CLIENTS
+    Route::apiResource('clients', 'App\Http\Controllers\ClientController');
 
-// COUNTRY
-Route::apiResource('countries', 'App\Http\Controllers\CountryController');
+    // CLIENT STATUS
+    Route::apiResource('client-statuses', 'App\Http\Controllers\ClientStatusController');
 
-// MARITAL STATUS
-Route::apiResource('marital-statuses', 'App\Http\Controllers\MaritalStatusController');
+    // COMMENT
+    Route::apiResource('comments', 'App\Http\Controllers\CommentController');
 
-// OCCUPATION
-Route::apiResource('occupations', 'App\Http\Controllers\OccupationController');
+    // COUNTRY
+    Route::apiResource('countries', 'App\Http\Controllers\CountryController');
 
-// ORDER STATUS
-Route::apiResource('order-statuses', 'App\Http\Controllers\OrderStatusController');
+    // MARITAL STATUS
+    Route::apiResource('marital-statuses', 'App\Http\Controllers\MaritalStatusController');
 
-// PROVIDER
-Route::apiResource('providers', 'App\Http\Controllers\ProviderController');
+    // OCCUPATION
+    Route::apiResource('occupations', 'App\Http\Controllers\OccupationController');
 
-// SEARCH
-Route::get('search-clients', 'App\Http\Controllers\SearchController@searchClients')
-    ->name('search.clients');
-Route::get('search-orders', 'App\Http\Controllers\SearchController@searchOrders')
-    ->name('search.orders');
+    // ORDER STATUS
+    Route::apiResource('order-statuses', 'App\Http\Controllers\OrderStatusController');
 
-// SERVICE ORDER
-Route::apiResource('service-orders', 'App\Http\Controllers\ServiceOrderController');
+    // PROVIDER
+    Route::apiResource('providers', 'App\Http\Controllers\ProviderController');
 
-// SERVICE TYPE
-Route::apiResource('service-types', 'App\Http\Controllers\ServiceTypeController');
+    // SEARCH
+    Route::get('search-clients', 'App\Http\Controllers\SearchController@searchClients')
+        ->name('search.clients');
+    Route::get('search-orders', 'App\Http\Controllers\SearchController@searchOrders')
+        ->name('search.orders');
 
-// USER TYPE
-Route::apiResource('user-types', 'App\Http\Controllers\UserTypeController');
+    // SERVICE ORDER
+    Route::apiResource('service-orders', 'App\Http\Controllers\ServiceOrderController');
+
+    // SERVICE TYPE
+    Route::apiResource('service-types', 'App\Http\Controllers\ServiceTypeController');
+
+    // USER TYPE
+    Route::apiResource('user-types', 'App\Http\Controllers\UserTypeController');
+
+});
+
 
