@@ -21,9 +21,9 @@ class ClientController extends Controller
 
         if($request->has('attr')){
             $attr = $request->attr;
-            $clients = Client::selectRaw($attr)->get();
+            $clients = Client::selectRaw($attr)->with(['occupation', 'clientStatus'])->get();
         } else {
-            $clients = Client::all();
+            $clients = Client::with(['occupation', 'clientStatus'])->get();
         }
         
         return response()->json($clients, 200);

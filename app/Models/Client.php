@@ -48,7 +48,7 @@ class Client extends Model
 
     public function clientStatus()
     {
-        return $this->belongsTo(ClientStatus::class, 'clientstatus_id', 'id');
+        return $this->belongsTo(ClientStatus::class, 'client_status_id', 'id');
     }
 
     public function serviceOrders()
@@ -58,12 +58,12 @@ class Client extends Model
 
     public function brazilState()
     {
-        return $this->belongsTo(BrazilState::class, 'brazilstate_id', 'id');
+        return $this->belongsTo(BrazilState::class, 'brazil_state_id', 'id');
     }
 
     public function brazilCity()
     {
-        return $this->belongsTo(BrazilCity::class, 'brazilcity_id', 'id');
+        return $this->belongsTo(BrazilCity::class, 'brazil_city_id', 'id');
     }
 
     public function city()
@@ -78,12 +78,12 @@ class Client extends Model
 
     public function occupation()
     {
-        return $this->belongsTo(Occupation::class, 'occupation_id', 'id');
+        return $this->belongsTo(Occupation::class);
     }
 
     public function maritalStatus()
     {
-        return $this->belongsTo(MaritalStatus::class, 'maritalstatus_id', 'id');
+        return $this->belongsTo(MaritalStatus::class, 'marital_status_id', 'id');
     }
 
     public function comments()
@@ -101,5 +101,10 @@ class Client extends Model
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-y');
+    }
+
+    public function setNameAttribute($value)
+    {
+        return filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 }

@@ -27,6 +27,6 @@ class ClientStatus extends Model
 
     public function clients()
     {
-        return $this->hasMany(Client::class, 'clientstatus_id', 'id');
+        return $this->hasMany(Client::class, 'client_status_id', 'id');
     }
 }
