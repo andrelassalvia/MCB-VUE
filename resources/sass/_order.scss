@@ -1,0 +1,61 @@
+#newOrder,
+#listOrders {
+    padding-bottom: 40px;
+    .card-header {
+        display: flex;
+        align-content: center;
+        gap: 8px;
+        h2 {
+            font-size: 14px;
+            margin-bottom: 0;
+            align-self: center;
+        }
+
+        .buttons {
+            margin-left: auto;
+        }
+    }
+
+    .card-body {
+        .col-form-label {
+            font-weight: 700;
+        }
+
+        .client--button {
+            gap: 10px;
+        }
+    }
+}
+
+#listOrders {
+    form {
+        margin-bottom: 20px;
+
+        .error {
+            color: $error;
+            font-weight: 600;
+        }
+    }
+    .card-header {
+        .btn--create {
+            color: #fff;
+        }
+        .btn--create:hover {
+            text-decoration: none;
+        }
+    }
+
+    .search--buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .btn--clear {
+            color: $primary;
+        }
+
+        .btn--clear:hover {
+            color: #fff;
+        }
+    }
+}

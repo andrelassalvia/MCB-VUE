@@ -1,0 +1,60 @@
+#newProvider,
+#listProviders {
+    padding-bottom: 40px;
+    .card-header {
+        display: flex;
+        align-content: center;
+        gap: 8px;
+        h2 {
+            font-size: 14px;
+            margin-bottom: 0;
+            align-self: center;
+        }
+
+        .buttons {
+            margin-left: auto;
+        }
+    }
+
+    .card-body {
+        .col-form-label {
+            font-weight: 700;
+        }
+
+        .form-check-input {
+            align-self: center;
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+#listProviders {
+    form {
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        .btn--create {
+            color: #fff;
+        }
+
+        .btn--create:hover {
+            text-decoration: none;
+        }
+    }
+
+    .search--buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .btn--clear {
+            color: $primary;
+        }
+
+        .btn--clear:hover {
+            color: #fff;
+        }
+    }
+}
